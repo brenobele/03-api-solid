@@ -12,16 +12,16 @@ jobs:
         image: bitnami/postgresql
         ports:
           - 5432:5432
-        environment:
-          - POSTGRES_USERNAME=docker
-          - POSTGRES_PASSWORD=docker
-          - POSTGRES_DATABASE=apisolid
+        env:
+          - POSTGRES_USERNAME: docker
+          - POSTGRES_PASSWORD: docker
+          - POSTGRES_DATABASE: apisolid
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
           cache: 'npm'
 
       - run: npm ci
